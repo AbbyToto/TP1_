@@ -90,4 +90,33 @@ class Chaussure
             return "chuassure introuvable";
         }
     }
+
+
+
+    function displayChaussuresByBrand($column, $brand)
+    {
+        global $pdo;
+
+        $sql = "SELECT * FROM Chaussure WHERE marque = :brand ORDER BY $column";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':brand', $brand, PDO::PARAM_STR);
+        $stmt->execute();
+
+
+        echo "<h2>Chaussures de la marque $brand triées par $column :</h2>";
+        echo "<table border='1'>";
+        echo "<tr><th>ID</th><th>Nom</th><th>Marque</th><th>Taille</th><th>Prix</th></tr>";
+
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            echo "<tr>";
+            echo "<td>" . $row['id'] . "</td>";
+            echo "<td>" . $row['nom'] . "</td>";
+            echo "<td>" . $row['marque'] . "</td>";
+            echo "<td>" . $row['taille'] . "</td>";
+            echo "<td>" . $row['prix'] . "</td>";
+            echo "</tr>";
+        }
+
+        echo "</table>";
+    }
 }
