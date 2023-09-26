@@ -34,7 +34,7 @@ print_r($chaussure);
 echo "<br>";
 echo "<br>";
 
-$chuassure_added = $chuassure1->addChaussure("addnewName", "newBrand", 9.0, 99.23);
+$chuassure_added = $chuassure1->addChaussure("NBA", "Nike", 7.0, 96.44);
 var_dump($chuassure_added);
 
 echo "<br>";
@@ -50,3 +50,12 @@ print_r($newChaussure);
 $id = 13; // Replace with the Chaussure ID you want to delete
 
 $result = $chuassure1->deleteChaussureById($id);
+
+
+$columnToSortBy = "nom";
+$brandToShow = "Nike";
+
+$tab = $chuassure1->displayChaussuresByBrand($columnToSortBy, $brandToShow);
+
+// fermer la  base de donnees de connection
+$pdo = null;
