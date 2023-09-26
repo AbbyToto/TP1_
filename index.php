@@ -51,9 +51,9 @@ $id = 13; // Replace with the Chaussure ID you want to delete
 
 $result = $chuassure1->deleteChaussureById($id);
 
-
-$columnToSortBy = "nom";
-$brandToShow = "Nike";
+//tri dans une colonne choisi(tous les chaussure d’un même marque)
+$columnToSortBy = "nom"; //Remplacez par la colonne par laquelle vous souhaitez trier (par exemple, « nom », « taille », « prix »)
+$brandToShow = "Nike"; // Remplacez par la marque que vous souhaitez afficher
 
 $tab = $chuassure1->displayChaussuresByBrand($columnToSortBy, $brandToShow);
 
